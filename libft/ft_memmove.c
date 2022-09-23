@@ -12,6 +12,10 @@
 
 void	*memmove(void *str1, const void *str2, size_t n)
 {
+	int	i;
+
+	i = (int)n;
+
 	if (!str1 && !str2)
 		return (0);
 	if (str1 > str2)
@@ -24,10 +28,9 @@ void	*memmove(void *str1, const void *str2, size_t n)
 	}
 	else
 		{
-			i = 0;
-			while (i < (int)n)
+			while (i >= (int)n)
 			{
-				*(char*)(str1 + n) = *(char*)(str2 + n);
+				*(char*)(str1 + ) = *(char*)(str2 + n);
 				n++;
 			}
 		}

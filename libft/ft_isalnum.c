@@ -12,7 +12,7 @@
 
 int	ft_isalnum(int c)
 {
-	if ((i >= "a" && i <= "z") || (i >= "A" && i <= "Z") || (i >= 0 && i <= 9))
+	if ((c >= "a" && c <= "z") || (c >= "A" && c <= "Z") || (c >= 0 && c <= 9))
 	{
 		return (1);
 	}
