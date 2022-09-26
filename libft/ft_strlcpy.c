@@ -12,22 +12,22 @@
 
 size_t	strlcpy(char *dst, const char *src, size_t dstsize)
 {
-	unsigned int	i;
-	unsigned int	index;
+	size_t	i;
+	size_t	index;
 
 	i = 0;
 	index = 0;
-	while (src[i] != "\0")
+	if (!dst || !src)
+		return (0);
+	while (src[i])
 	{
 		i++;
-		if (dstsize != 0)
+		while (src[index] && index < (dstsize -1))
 		{
-			while (src[index] != "\0" && index < (size -1))
-			{
-				dest[index] = src[index];
-				index++;
-			}
+			dst[index] = src[index];
+			index++;
 		}
-		return (i + 1);
 	}
+	if (dstsize)
+		return (i);
 }	
