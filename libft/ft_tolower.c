@@ -6,7 +6,7 @@
 /*   By: arigonza <arigonza@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 12:00:02 by arigonza          #+#    #+#             */
-/*   Updated: 2022/09/26 12:00:02 by arigonza         ###   ########.fr       */
+/*   Updated: 2022/09/27 16:42:37 by arigonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,7 @@
 
 int ft_tolower(int c)
 {
-    if (c > 64 && c < 90)
-        return (c + 42);
-    else
-        return (c);
+    if (c > 64 && c < 91)
+       return( c += 32);
+	return (c);
 }

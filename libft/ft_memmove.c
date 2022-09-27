@@ -6,34 +6,44 @@
 /*   By: arigonza <arigonza@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 17:05:28 by arigonza          #+#    #+#             */
-/*   Updated: 2022/09/22 12:10:11 by arigonza         ###   ########.fr       */
+/*   Updated: 2022/09/24 14:10:42 by arigonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	*memmove(void *str1, const void *str2, size_t n)
+/*
+** This function copies "n" bytes from the memory of "src" to "dest".
+** Memories may overlap.
+** First, the bytes in "src" are copied into a temporary array and then to
+** "dest".
+** For further information, please check the Standard C Library function
+** 'memmove(void *dst, const void *src, size_t n)'
+*/
+
+#include "libft.h"
+
+void    *ft_memmove(void *dst, const void *src, size_t len)
 {
-	int	i;
-
-	i = (int)n;
-
-	if (!str1 && !str2)
-		return (0);
-	if (str1 > str2)
-	{
-		while (n > 0)
-		{
-			*(char*)(str1 + n) = *(char*)(str2 + n);
-			n--;
-		}
-	}
-	else
-		{
-			while (i >= (int)n)
-			{
-				*(char*)(str1 + ) = *(char*)(str2 + n);
-				n++;
-			}
-		}
-	return (str1);
-	}
+    size_t  i;
+    char    *src2;
+    char    *dst2;
+    src2 = (char *)src;
+    dst2 = (char *)dst;
+    i = 0;
+    if (!dst && !src)
+        return (0);
+    if (dst > src)
+    {
+        while (len--)
+            dst2[len] = src2[len];
+    }
+    else if (dst <= src)
+    {
+        while (i < len)
+        {
+            dst2[i] = src2[i];
+            i++;
+        }
+    }
+    return (dst);
+}
 

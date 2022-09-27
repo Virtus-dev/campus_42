@@ -6,15 +6,15 @@
 /*   By: arigonza <arigonza@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 12:04:20 by arigonza          #+#    #+#             */
-/*   Updated: 2022/09/22 13:03:34 by arigonza         ###   ########.fr       */
+/*   Updated: 2022/09/27 11:39:43 by arigonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include<stddef.h>
+#include "libft.h"
 
 size_t	ft_strlen(const char *s)
 {
-	int	i;
+	size_t	i;
 
 	i = 0;
 	while (*s++)

@@ -6,7 +6,7 @@
 /*   By: arigonza <arigonza@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 11:54:26 by arigonza          #+#    #+#             */
-/*   Updated: 2022/09/26 11:54:26 by arigonza         ###   ########.fr       */
+/*   Updated: 2022/09/27 15:43:52 by arigonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 int ft_toupper(int c)
 {
     if (c > 96 && c < 123)
-        return (c - 42);
-    else
-        return (c);
+        c -= 32;
+	return (c);
 }

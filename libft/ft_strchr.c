@@ -3,33 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arigonza <arigonza@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: arigonza <arigonza@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/26 12:03:02 by arigonza          #+#    #+#             */
-/*   Updated: 2022/09/26 12:03:02 by arigonza         ###   ########.fr       */
+/*   Created: 2022/09/27 11:00:12 by arigonza          #+#    #+#             */
+/*   Updated: 2022/09/27 18:39:52 by arigonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char *strchr(const char *str, int c)
+char *ft_strchr(const char *str, int c)
 {
-    char            *aux;
-    unsigned int    index;
+	while (*str != '\0' && (char)c != *str)
+		str++;
+	if ((char)c == *str)
+		return ((char *)str);
+	return (0);
 
-    index = 0;
-    while (!str)
-    {
-        if (str[index] == c)
-        {
-            while (!str[index])
-            {
-                aux = str[index];
-                index++;
-                *aux++;
-            }
-            return (aux);
-        }
-        return (0);
-    }
 }

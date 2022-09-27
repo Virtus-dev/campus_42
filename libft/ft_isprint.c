@@ -6,13 +6,13 @@
 /*   By: arigonza <arigonza@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 12:01:19 by arigonza          #+#    #+#             */
-/*   Updated: 2022/09/21 12:05:34 by arigonza         ###   ########.fr       */
+/*   Updated: 2022/09/24 11:23:45 by arigonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 int	ft_isprint(int c)
 {
-	if (c >= 32 && c <= 176)
+	if (c >= 32 && c < 127)
 	{
 		return (1);
 	}
