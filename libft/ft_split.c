@@ -43,7 +43,7 @@ char	**ft_split(const char *s, char c)
 	{
 		if (s[i] == c && s[i + 1] != c)
 		{
-			*splitedstr = ft_substr(s, j, (i - j));
+			**splitedstr = ft_substr(s, j, (i - j));
 			j = i;
 			splitedstr++;
 		}
