@@ -1,30 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: arigonza <arigonza@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/27 18:48:54 by arigonza          #+#    #+#             */
-/*   Updated: 2022/09/28 11:46:23 by arigonza         ###   ########.fr       */
+/*   Created: 2022/10/03 12:16:34 by arigonza          #+#    #+#             */
+/*   Updated: 2022/10/03 12:35:13 by arigonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_strncmp(const char *s1, const char *s2, size_t n)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	size_t	i;
-	
-	if (n == 0)
-		return (0);
+	char	*combinedstring;
+	int		i;
+	int		j;
+
+	j = 0;
 	i = 0;
-	while (s1[i] != '\0' && s1[i] == s2[i])
+	if (!s1 && !s2)
+		return (0);
+	combinedstring = malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
+	if (!combinedstring)
+		return (0);
+	while (s1[i] != '\0')
 	{
-		if (i < (n - 1))
-			i++;
-		else
-			return (0);
+		combinedstring[i] = s1[i];
+		i++;
 	}
-	return ((unsigned char)(s1[i]) - (unsigned char)(s2[i]));
+	while (s2[j] != '\0')
+	{
+		combinedstring[i] = s2[j];
+		i++;
+		j++;
+	}
+	combinedstring[i] = '\0';
+	return (combinedstring);
 }

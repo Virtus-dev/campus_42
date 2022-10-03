@@ -1,30 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: arigonza <arigonza@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/27 18:48:54 by arigonza          #+#    #+#             */
-/*   Updated: 2022/09/28 11:46:23 by arigonza         ###   ########.fr       */
+/*   Created: 2022/10/03 12:42:55 by arigonza          #+#    #+#             */
+/*   Updated: 2022/10/03 12:57:44 by arigonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_strncmp(const char *s1, const char *s2, size_t n)
+char	*ft_strtrim(const char *s1, const char *set)
 {
-	size_t	i;
-	
-	if (n == 0)
+	size_t i;
+
+	if (!s1 || !set)
 		return (0);
-	i = 0;
-	while (s1[i] != '\0' && s1[i] == s2[i])
-	{
-		if (i < (n - 1))
-			i++;
-		else
-			return (0);
-	}
-	return ((unsigned char)(s1[i]) - (unsigned char)(s2[i]));
+	while (*s1 && ft_strchr(set,*s1))
+		s1++;
+	i = ft_strlen(s1);
+	while (i && ft_strchr(set, s1[i]))
+		i--;
+	return (ft_substr(s1, 0, (i + 1)));
 }
+

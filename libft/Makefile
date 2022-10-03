@@ -6,7 +6,7 @@
 #    By: arigonza <arigonza@student.42malaga.com>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/20 17:15:35 by arigonza          #+#    #+#              #
-#    Updated: 2022/09/27 19:25:58 by arigonza         ###   ########.fr        #
+#    Updated: 2022/10/03 12:52:14 by arigonza         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,6 +42,15 @@ SRC =	./ft_isalpha.c\
 		./ft_tolower.c\
 		./ft_toupper.c\
 		./ft_strncmp.c\
+		./ft_memchr.c\
+		./ft_memcmp.c\
+		./ft_strnstr.c\
+		./ft_atoi.c\
+		./ft_calloc.c\
+		./ft_strdup.c\
+		./ft_substr.c\
+		./ft_strjoin.c\
+		./ft_strtrim.c\
 
 OBJS = $(SRC:.c=.o)
 
