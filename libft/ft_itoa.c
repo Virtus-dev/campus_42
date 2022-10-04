@@ -1,26 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strrchr.c                                       :+:      :+:    :+:   */
+/*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arigonza < arigonza@student.42malaga.com>  +#+  +:+       +#+        */
+/*   By: arigonza <arigonza@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/26 12:16:58 by arigonza          #+#    #+#             */
-/*   Updated: 2022/10/04 13:36:37 by arigonza         ###   ########.fr       */
+/*   Created: 2022/10/04 12:44:10 by arigonza          #+#    #+#             */
+/*   Updated: 2022/10/04 13:45:35 by arigonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strrchr(const char *str, int c)
-{
-	int	index;
+//Entero minimo - 2 147 483 648
 
-index = ft_strlen((char *)str) + 1;
-	while (index--)
+char	*ft_itoa(int n)
+{
+	int	maxInt;
+
+	minInt = 2147483648;
+	while (n < maxInt)
 	{
-		if (*(str + index) == (char)c)
-			return ((char *)(str + index));
-	}
-	return (0);
-}
+		if (n < 9)
+			return (n + '0');
+		else
+		{
+			

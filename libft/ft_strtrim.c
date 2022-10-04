@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arigonza <arigonza@student.42malaga.com>   +#+  +:+       +#+        */
+/*   By: arigonza < arigonza@student.42malaga.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 12:42:55 by arigonza          #+#    #+#             */
-/*   Updated: 2022/10/03 12:57:44 by arigonza         ###   ########.fr       */
+/*   Updated: 2022/10/04 13:37:01 by arigonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 char	*ft_strtrim(const char *s1, const char *set)
 {
-	size_t i;
+	size_t	i;
 
 	if (!s1 || !set)
 		return (0);

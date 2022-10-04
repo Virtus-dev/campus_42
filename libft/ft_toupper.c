@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   ft_toupper.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arigonza <arigonza@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: arigonza < arigonza@student.42malaga.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 11:54:26 by arigonza          #+#    #+#             */
-/*   Updated: 2022/09/27 15:43:52 by arigonza         ###   ########.fr       */
+/*   Updated: 2022/10/04 13:38:36 by arigonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int ft_toupper(int c)
+int	ft_toupper(int c)
 {
-    if (c > 96 && c < 123)
-        c -= 32;
+	if (c > 96 && c < 123)
+		c -= 32;
 	return (c);
 }

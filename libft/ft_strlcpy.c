@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arigonza <arigonza@student.42malaga.com>   +#+  +:+       +#+        */
+/*   By: arigonza < arigonza@student.42malaga.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 19:05:43 by arigonza          #+#    #+#             */
-/*   Updated: 2022/09/27 15:30:35 by arigonza         ###   ########.fr       */
+/*   Updated: 2022/10/04 13:33:34 by arigonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 	index = 0;
 	if (size > 0)
 	{
-		while  (src[index] && index < (size -1))
+		while (src[index] && index < (size -1))
 		{
 			dst[index] = src[index];
 			index++;
