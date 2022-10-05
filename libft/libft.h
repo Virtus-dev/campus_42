@@ -6,7 +6,7 @@
 /*   By: arigonza < arigonza@student.42malaga.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 17:24:01 by arigonza          #+#    #+#             */
-/*   Updated: 2022/10/04 13:16:36 by arigonza         ###   ########.fr       */
+/*   Updated: 2022/10/05 13:52:34 by arigonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <unistd.h>
 # include <string.h>
 # include <stdio.h>
+# include <limits.h>
 
 /*
  * Struct
@@ -69,5 +70,6 @@ int		ft_isalnum(int c);
 int		ft_tolower(int c);
 int		ft_toupper(int c);
 int		ft_atoi(const char *str);
+char	*ft_itoa(int n);
 
 #endif

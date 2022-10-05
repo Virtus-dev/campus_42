@@ -6,7 +6,7 @@
 /*   By: arigonza < arigonza@student.42malaga.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 12:42:55 by arigonza          #+#    #+#             */
-/*   Updated: 2022/10/04 13:37:01 by arigonza         ###   ########.fr       */
+/*   Updated: 2022/10/05 10:38:51 by arigonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,4 +25,3 @@ char	*ft_strtrim(const char *s1, const char *set)
 		i--;
 	return (ft_substr(s1, 0, (i + 1)));
 }
-

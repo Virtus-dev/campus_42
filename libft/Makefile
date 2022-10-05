@@ -6,7 +6,7 @@
 #    By: arigonza <arigonza@student.42malaga.com>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/20 17:15:35 by arigonza          #+#    #+#              #
-#    Updated: 2022/10/03 16:49:07 by arigonza         ###   ########.fr        #
+#    Updated: 2022/10/05 10:40:00 by arigonza         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -52,6 +52,7 @@ SRC =	./ft_isalpha.c\
 		./ft_strjoin.c\
 		./ft_strtrim.c\
 		./ft_split.c\
+		./ft_itoa.c\
 
 OBJS = $(SRC:.c=.o)
 

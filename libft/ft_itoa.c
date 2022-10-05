@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arigonza <arigonza@student.42malaga.com>   +#+  +:+       +#+        */
+/*   By: arigonza < arigonza@student.42malaga.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 12:44:10 by arigonza          #+#    #+#             */
-/*   Updated: 2022/10/04 13:45:35 by arigonza         ###   ########.fr       */
+/*   Updated: 2022/10/05 14:47:26 by arigonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ static int	ft_digit_count(long int i)
 	int	count;
 
 	count = 0;
+	if (i == 0)
+		return (1);
 	if (i < 0)
 	{
 		i *= -1;
@@ -31,7 +33,7 @@ static int	ft_digit_count(long int i)
 	return (count);
 }
 
-char		*ft_itoa(int n)
+char	*ft_itoa(int n)
 {
 	char		*str;
 	int			i;
@@ -39,14 +41,12 @@ char		*ft_itoa(int n)
 
 	nb = n;
 	i = ft_digit_count(nb);
-	if (!(str = malloc(i * sizeof(char) + 1)))
+	str = malloc(sizeof(char) * (i + 1));
+	i--;
+	if (!str)
 		return (0);
-	str[i--] = 0;
 	if (nb == 0)
-	{
-		str = ft_calloc(2, sizeof(char));
-		str[0] = 48;
-	}
+		str[0] = '0';
 	if (nb < 0)
 	{
 		str[0] = '-';
@@ -57,5 +57,6 @@ char		*ft_itoa(int n)
 		str[i--] = nb % 10 + '0';
 		nb = nb / 10;
 	}
+	str[ft_digit_count(n)] = '\0';
 	return (str);
 }

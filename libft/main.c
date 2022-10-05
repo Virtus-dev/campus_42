@@ -2,8 +2,7 @@
 
 int main()
 {
-    char    *str = " Tripo uille       ";
-    char    car = ' ';
+    int    number = 8124;
 
-    ft_split(str, car);
+    printf("%s",ft_itoa(number));
 }
