@@ -6,7 +6,7 @@
 #    By: arigonza <arigonza@student.42malaga.com>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/20 17:15:35 by arigonza          #+#    #+#              #
-#    Updated: 2022/10/05 10:40:00 by arigonza         ###   ########.fr        #
+#    Updated: 2022/10/06 22:35:47 by arigonza         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -53,8 +53,32 @@ SRC =	./ft_isalpha.c\
 		./ft_strtrim.c\
 		./ft_split.c\
 		./ft_itoa.c\
+		./ft_strmapi.c\
+		./ft_striteri.c\
+		./ft_putchar_fd.c\
+		./ft_putstr_fd.c\
+		./ft_putendl_fd.c\
+		./ft_putnbr_fd.c\
+
+BONUS = ./ft_lstnew_bonus.c\
+		./ft_lstadd_front_bonus.c\
+		./ft_lstsize_bonus.c\
+		./ft_lstlast_bonus.c\
+		./ft_lstadd_back_bonus.c\
+		./ft_lstdelone_bonus.c\
+		./ft_lstclear_bonus.c\
+		./ft_lstiter_bonus.c\
+		./ft_lstmap_bonus.c\
 
 OBJS = $(SRC:.c=.o)
+
+OBJSBONUS = $(BONUS:.c=.o)
+
+$(OBJSBONUS) : $(BONUS)
+	$(CC) $(FLAGS) -c $(BONUS)
+
+bonus : $(OBJS) $(OBJSBONUS)
+	$(AR) $(ARFLAGS) $(NAME) $(OBJS) $(OBJSBONUS)
 
 all : $(NAME)
 
