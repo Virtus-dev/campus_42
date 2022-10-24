@@ -6,7 +6,7 @@
 /*   By: arigonza < arigonza@student.42malaga.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 10:54:56 by arigonza          #+#    #+#             */
-/*   Updated: 2022/10/06 22:06:55 by arigonza         ###   ########.fr       */
+/*   Updated: 2022/10/18 18:04:25 by arigonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 			aux = malloc(sizeof(char) * 1);
 		if (!aux)
 			return (0);
-			*aux = '\0';
+		*aux = '\0';
 		return (aux);
 	}
 	if (len > (ft_strlen(s + start)))

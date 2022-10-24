@@ -6,11 +6,11 @@
 /*   By: arigonza <arigonza@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 13:09:38 by arigonza          #+#    #+#             */
-/*   Updated: 2022/09/24 11:02:51 by arigonza         ###   ########.fr       */
+/*   Updated: 2022/10/18 16:39:38 by arigonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 int	ft_isalpha(int c)
 {	
-	return ((c >= 'a' & c <= 'z') || (c >= 'A' & c <= 'Z'));
+	return (((c >= 'a') & (c <= 'z')) || ((c >= 'A') & (c <= 'Z')));
 }

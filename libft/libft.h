@@ -6,7 +6,7 @@
 /*   By: arigonza < arigonza@student.42malaga.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 17:24:01 by arigonza          #+#    #+#             */
-/*   Updated: 2022/10/07 12:22:51 by arigonza         ###   ########.fr       */
+/*   Updated: 2022/10/18 16:20:53 by arigonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,9 @@ int		ft_toupper(int c);
 int		ft_atoi(const char *str);
 char	*ft_itoa(int n);
 void	ft_putnbr_fd(int n, int fd);
-
+/*
+ *LinkedList
+ */
 t_list	*ft_lstnew(void *content);
 void	ft_lstadd_front(t_list **lst, t_list *new);
 int		ft_lstsize(t_list *lst);

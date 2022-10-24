@@ -6,7 +6,7 @@
 /*   By: arigonza <arigonza@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 12:04:20 by arigonza          #+#    #+#             */
-/*   Updated: 2022/09/27 11:39:43 by arigonza         ###   ########.fr       */
+/*   Updated: 2022/10/18 18:27:35 by arigonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ size_t	ft_strlen(const char *s)
 	size_t	i;
 
 	i = 0;
-	while (*s++)
+	while (s[i] != '\0')
 	{
 		i++;
 	}

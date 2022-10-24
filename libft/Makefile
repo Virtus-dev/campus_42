@@ -6,7 +6,7 @@
 #    By: arigonza <arigonza@student.42malaga.com>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/20 17:15:35 by arigonza          #+#    #+#              #
-#    Updated: 2022/10/06 22:35:47 by arigonza         ###   ########.fr        #
+#    Updated: 2022/10/18 18:01:56 by arigonza         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -87,7 +87,7 @@ clean :
 
 
 fclean : clean
-		$(RM) $(RMFLAG) $(NAME)
+		$(RM) $(RMFLAG) $(OBJSBONUS) $(NAME)
 
 re : fclean all
 
