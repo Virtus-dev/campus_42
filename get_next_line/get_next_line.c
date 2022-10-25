@@ -6,11 +6,18 @@
 /*   By: arigonza <arigonza@student.42.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 18:21:34 by arigonza          #+#    #+#             */
-/*   Updated: 2022/10/25 13:44:55 by arigonza         ###   ########.fr       */
+/*   Updated: 2022/10/25 15:45:40 by arigonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+
+static void	ft_free_null(char *ptr)
+{
+	if (!ptr)
+		free(ptr);
+	ptr = NULL;
+}
 
 char	*get_next_line(int fd)
 {
@@ -37,11 +44,4 @@ char	*get_next_line(int fd)
 
 }
 
-static void	ft_free_null(char *ptr)
-{
-	if (!ptr)
-		return ;
-	free(ptr);
-	ptr = NULL;
-}
 	
