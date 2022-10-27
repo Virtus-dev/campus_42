@@ -6,42 +6,60 @@
 /*   By: arigonza <arigonza@student.42.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 18:21:34 by arigonza          #+#    #+#             */
-/*   Updated: 2022/10/25 15:45:40 by arigonza         ###   ########.fr       */
+/*   Updated: 2022/10/27 14:48:15 by arigonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-static void	ft_free_null(char *ptr)
+char	*ft_read(int fd, char *buffer)
 {
-	if (!ptr)
-		free(ptr);
-	ptr = NULL;
+	int		readed_bytes;
+	char		*str;
+	
+	readed_bytes = read(fd, str, BUFFER_SIZE);
+	while (readed_bytes > 0)
+	{
+		buffer = strjoin(buffer, str);
+		if (ft_strchr(str, '\n'))
+				break;
+	}
+	return (buffer);
+}
+
+char	*ft_get_line(char *buffer)
+{
+	int	i;
+	char	*line;
+	
+	i = 0;
+	while (buffer[i] != '\n' || buffer[i] != '\0')
+		i++;
+	line = malloc((BUFFER_SIZE + 1) * sizeof(char));
+	i = 0;
+	while (buffer[i] != '\n' || buffer[i] != '\0')
+	{
+		line[i] = buffer[i];
+		i++;
+	}
+	return (line);
+}
+
+void	ft_update_buffer(char *buffer, int line_size)
+{
+	int	buffer_size;
+	char	*new_buffer;
+
+	buffer_size = ft_strlen(buffer);
+	new_buffer = malloc((buffer_size - line_size) * sizeof(char));
+	while (i < (buffer_size - line_size))
+		new_buffer[i] = buffer[line_size + i];
+	new_buffer[i] = '\0';
+	free(buffer);
+	return (new_buffer);
 }
 
 char	*get_next_line(int fd)
 {
-	size_t		readed_bytes;
 	static char	*buffer;
-	char		tmp[ARG_MAX];
-	int		i;
-	
-	buffer = malloc((BUFFER_SIZE + 1) * sizeof(char));
-	//in case the malloc dont went well, return null and make free
-	ft_free_null(buffer);
-	readed_bytes = read(fd, buffer, BUFFER_SIZE);
-
-	i = 0;
-	//checking if read() actually works
-	//and going through the buffer moving it to the end of the line
-	if (readed_bytes != 0)
-	{
-		while (*buffer != END_OF_LINE)
-			tmp[i++] = buffer++;
-	}else
-		return NULL;
-	return (ft_strdup(tmp)); //returned a copy with the line readed
-
-}
-
-	
+	ft_read(fd, buffer);
