@@ -6,7 +6,7 @@
 /*   By: arigonza < arigonza@student.42malaga.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 18:22:00 by arigonza          #+#    #+#             */
-/*   Updated: 2022/11/06 12:09:32 by arigonza         ###   ########.fr       */
+/*   Updated: 2022/11/07 10:34:26 by arigonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ void	*ft_memset(void *b, int c, size_t len)
 {
 	size_t	i;
 
+	i = 0;
 	while (i < len)
 	{
 		((unsigned char *)b)[i] = (unsigned char) c;

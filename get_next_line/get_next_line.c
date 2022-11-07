@@ -6,7 +6,7 @@
 /*   By: arigonza < arigonza@student.42malaga.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 18:21:34 by arigonza          #+#    #+#             */
-/*   Updated: 2022/11/06 13:31:00 by arigonza         ###   ########.fr       */
+/*   Updated: 2022/11/07 10:36:06 by arigonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,20 @@
 #include <fcntl.h>
 #include <stdio.h>
 
-void	ft_check_null(char buffer)
+void	ft_check_null(char *buffer)
 {
-	if (buffer == NULL)
-		buffer = malloc((BUFFER_SIZE + 1) * sizeof(char));
+	char	*aux;
+
+
+	if (!buffer)
+		buffer =  malloc((BUFFER_SIZE + 1) * sizeof(char));
 	else
 	{
-
 		aux = malloc((ft_strlen(buffer) + 1) * sizeof(char));
 		if (!aux)
 		{
 			free(aux);
-			return (NULL);
+			return ;
 		}
 		ft_strlcpy(buffer, aux);
 		free(buffer);
@@ -33,7 +35,7 @@ void	ft_check_null(char buffer)
 		if (!buffer)
 		{
 			free(buffer);
-			return (NULL);
+			return ;
 		}
 		ft_strlcpy(aux, buffer);
 		free(aux);
@@ -43,7 +45,6 @@ char	*ft_read(int fd, char *buffer)
 {
 	int	readed_bytes;
 	char	*str = NULL;
-	char	*aux;
 
 	ft_check_null(buffer);
 	str = calloc((BUFFER_SIZE + 1), sizeof(char));
