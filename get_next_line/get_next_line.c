@@ -6,7 +6,7 @@
 /*   By: arigonza < arigonza@student.42malaga.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 18:21:34 by arigonza          #+#    #+#             */
-/*   Updated: 2022/11/07 10:36:06 by arigonza         ###   ########.fr       */
+/*   Updated: 2022/12/01 14:59:50 by arigonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,65 +14,34 @@
 #include <fcntl.h>
 #include <stdio.h>
 
-void	ft_check_null(char *buffer)
-{
-	char	*aux;
-
-
-	if (!buffer)
-		buffer =  malloc((BUFFER_SIZE + 1) * sizeof(char));
-	else
-	{
-		aux = malloc((ft_strlen(buffer) + 1) * sizeof(char));
-		if (!aux)
-		{
-			free(aux);
-			return ;
-		}
-		ft_strlcpy(buffer, aux);
-		free(buffer);
-		buffer = malloc(ft_strlen(aux + (BUFFER_SIZE + 1)) *sizeof(char));
-		if (!buffer)
-		{
-			free(buffer);
-			return ;
-		}
-		ft_strlcpy(aux, buffer);
-		free(aux);
-	}
-}
-char	*ft_read(int fd, char *buffer)
+int	ft_read(int fd, char *buffer)
 {
 	int	readed_bytes;
-	char	*str = NULL;
-
-	ft_check_null(buffer);
+	/*char	*str;
+	
 	str = calloc((BUFFER_SIZE + 1), sizeof(char));
 	if (!str)
 	{
 		free(str);
-		return (NULL);
-	}
-	readed_bytes = read(fd, str, BUFFER_SIZE);
-	printf("readed_bytes equal to %d \n", readed_bytes);
+		return (0);	
+	}*/
+	readed_bytes = read(fd, buffer, BUFFER_SIZE);
+	//ft_strlcpy(str, buffer);
+	//free(str);
+       	printf("readed_bytes equal to %d \n", readed_bytes);	
+	//printf("buffer value after read is -> %s \n", buffer);
 	// when read returns 0, it means it reaches the end of file,
-	// keep it in mind, i should fix that later
-	if (readed_bytes <= 0)
-		return (NULL);
-	if (readed_bytes <= BUFFER_SIZE)
-	{
-		buffer = ft_strjoin(buffer, str);
-		printf("After strjoin buffer value is -> %s \n", buffer);
-	}
-	free(str);
-	return (buffer);
+	// keep it in mind, i should fix that late
+	
+	return (readed_bytes);
 }
+
+
 
 char	*ft_get_line(char *buffer)
 {
 	int	i;
 	char	*line;
-
 	i = 0;
 	while (buffer[i] != '\n' && buffer[i] != '\0')
 		i++;
@@ -90,7 +59,26 @@ char	*ft_get_line(char *buffer)
 	return (line);
 }
 
-char	*ft_update_buffer(char *buffer, int line_size)
+char	*ft_backup(char *buffer,int readed_bytes)
+{
+	char	*backup;
+	int	buffer_size;
+
+	buffer_size = ft_strlen(buffer);
+	backup = calloc((buffer_size + readed_bytes + 1), sizeof(char));
+	if (!backup)
+	{
+		free(backup);
+		return (NULL);
+	}
+
+	ft_strlcpy(buffer, backup);
+	//free(buffer);
+	return (backup);
+
+}
+
+char	*ft_update_buffer(char *buffer, int line_size, size_t readed_bytes)
 {
 	int	buffer_size;
 	char	*new_buffer;
@@ -98,43 +86,55 @@ char	*ft_update_buffer(char *buffer, int line_size)
 
 	i = 0;
 	buffer_size = ft_strlen(buffer);
-	new_buffer = malloc((buffer_size - line_size) * sizeof(char));
+	new_buffer = calloc((buffer_size + readed_bytes + 1), sizeof(char));
 	while (i < (buffer_size - line_size))
 	{
-		new_buffer[i] = buffer[line_size + i];
+		//printf("buffer value on loop -> %s \n", new_buffer);
+		new_buffer[i] = buffer[buffer_size - (buffer_size - line_size) + i];
 		i++;
 	}
-	new_buffer[i] = '\0';
 	free(buffer);
 	return (new_buffer);
 }
 
 char	*get_next_line(int fd)
 {
-	static char	*buffer = NULL;
+	char	*buffer = NULL;
 	char		*line;
 	int		line_length;
+	int		readed_bytes;
+	static char		*backup;
 
-	buffer = ft_read(fd, buffer);
-	line = ft_get_line(buffer);
-	line_length = ft_strlen(line);
-	while (line[line_length] != '\n')
+	line_length = 0;
+	buffer = malloc((BUFFER_SIZE + 1) * sizeof(char));
+	readed_bytes = ft_read(fd, buffer);
+	if (readed_bytes <= 0)
+		return (NULL);
+	//saves a backup of the current buffer
+	//printf("backup first value-> %s \n",backup);
+	if (backup == NULL)
+		backup = ft_backup(buffer, readed_bytes);
+	else
+		backup = ft_strjoin(backup, buffer);
+	while (line_length <= 0 && readed_bytes != 0)
 	{
-		buffer = ft_read(fd, buffer);
-		line = ft_get_line(buffer);
-		printf("line value is -> %s \n", line);
-		buffer = ft_update_buffer(buffer, line_length);
-		line_length = ft_strlen(line);
-		printf("Buffer value after the update -> %s \n", buffer);
+		if (ft_strchr(buffer,'\n'))
+		{
+			line = ft_get_line(backup);
+			line_length = ft_strlen(line);
+			//printf("line value is -> %s \n", line);
+			backup = ft_update_buffer(backup, line_length, readed_bytes);
+			//printf("backup after update value is -> %s \n",backup);
+		}else{
+			//backup = ft_backup(buffer, readed_bytes);
+			readed_bytes = ft_read(fd, buffer);
+			backup = ft_strjoin(backup,buffer);
+			//readed_bytes = ft_read(fd, buffer);
+			//printf("backup equals to -> %s \n", backup);	
+		}
 	}
-	//buffer = ft_update_buffer(buffer, line_length);
-	//printf("Buffer value after the update -> %s \n", buffer);
+	free(buffer);
+	//printf("buffer final value is -> %s \n", buffer);
 	return (line);
 }
 
-int main()
-{
-	int fd;
-	fd = open("./1char.txt", O_RDONLY);
-	printf("get_next_line output -> %s", get_next_line(fd));
-}

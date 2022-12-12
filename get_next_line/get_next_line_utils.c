@@ -6,7 +6,7 @@
 /*   By: arigonza < arigonza@student.42malaga.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 18:22:00 by arigonza          #+#    #+#             */
-/*   Updated: 2022/11/07 10:34:26 by arigonza         ###   ########.fr       */
+/*   Updated: 2022/11/29 12:06:06 by arigonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,25 +17,15 @@
 void	*ft_calloc(size_t count, size_t size)
 {
 	void	*ptr;
+	size_t 	i;
 
+	i = 0;
 	ptr = malloc(count * size);
 	if (!ptr)
 		return (0);
-	ft_memset(ptr, '\0', size);
+	while (i < size)
+		((unsigned char *)ptr)[i++] = '\0';
 	return (ptr);
-}
-
-void	*ft_memset(void *b, int c, size_t len)
-{
-	size_t	i;
-
-	i = 0;
-	while (i < len)
-	{
-		((unsigned char *)b)[i] = (unsigned char) c;
-		i++;
-	}
-	return (b);
 }
 
 size_t	ft_strlen(const char *s)
@@ -50,7 +40,7 @@ size_t	ft_strlen(const char *s)
 	return (i);
 }
 
-char	*ft_strjoin(char *s1, char *s2)
+char	*ft_strjoin(const char *s1, const char *s2)
 {
 	char	*combinedstring;
 	int		i;
@@ -60,7 +50,7 @@ char	*ft_strjoin(char *s1, char *s2)
 	i = 0;
 	if (!s1 && !s2)
 		return (NULL);
-	combinedstring = malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
+	combinedstring = malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 2));
 	if (!combinedstring)
 		return (0);
 	while (s1 != NULL && s1[i] != '\0')
@@ -72,7 +62,6 @@ char	*ft_strjoin(char *s1, char *s2)
 	while (s2[j] != '\0')
 		combinedstring[i++] = s2[j++];
 	combinedstring[i] = '\0';
-	free(s1);
 	return (combinedstring);
 }
 
@@ -87,7 +76,7 @@ void	ft_strlcpy(char const *src, char *dst)
 		i++;
 	}
 }
-/*
+
 char	*ft_strchr(const char *str, int c)
 {
 	while (*str != '\0' && *str != (char)c)
@@ -96,4 +85,4 @@ char	*ft_strchr(const char *str, int c)
 		return ((char *)str);
 	return (0);
 }
-*/
+
