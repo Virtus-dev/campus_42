@@ -6,14 +6,15 @@
 /*   By: arigonza < arigonza@student.42malaga.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 18:22:00 by arigonza          #+#    #+#             */
-/*   Updated: 2022/11/29 12:06:06 by arigonza         ###   ########.fr       */
+/*   Updated: 2022/12/12 17:11:44 by arigonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-# include <stdio.h>
- #include <fcntl.h>
+#include <stdio.h>
+#include <fcntl.h>
+
 void	*ft_calloc(size_t count, size_t size)
 {
 	void	*ptr;
@@ -40,7 +41,7 @@ size_t	ft_strlen(const char *s)
 	return (i);
 }
 
-char	*ft_strjoin(const char *s1, const char *s2)
+char	*ft_strjoin(char *s1, char *s2)
 {
 	char	*combinedstring;
 	int		i;
@@ -58,17 +59,17 @@ char	*ft_strjoin(const char *s1, const char *s2)
 		combinedstring[i] = s1[i];
 		i++;
 	}
-
 	while (s2[j] != '\0')
 		combinedstring[i++] = s2[j++];
 	combinedstring[i] = '\0';
+	free(s1);
 	return (combinedstring);
 }
 
 void	ft_strlcpy(char const *src, char *dst)
 {
 	int	i;
-	
+
 	i = 0;	
 	while (src[i] != '\0')
 	{
@@ -85,4 +86,3 @@ char	*ft_strchr(const char *str, int c)
 		return ((char *)str);
 	return (0);
 }
-
