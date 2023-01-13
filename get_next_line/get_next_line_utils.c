@@ -6,7 +6,7 @@
 /*   By: arigonza < arigonza@student.42malaga.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 18:22:00 by arigonza          #+#    #+#             */
-/*   Updated: 2022/12/12 17:11:44 by arigonza         ###   ########.fr       */
+/*   Updated: 2023/01/13 19:09:07 by arigonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	*ft_calloc(size_t count, size_t size)
 	ptr = malloc(count * size);
 	if (!ptr)
 		return (0);
-	while (i < size)
+	while (i < (count * size))
 		((unsigned char *)ptr)[i++] = '\0';
 	return (ptr);
 }
@@ -44,22 +44,26 @@ size_t	ft_strlen(const char *s)
 char	*ft_strjoin(char *s1, char *s2)
 {
 	char	*combinedstring;
-	int		i;
-	int		j;
+	size_t		i;
+	size_t		j;
+	size_t		len_s1;
+	size_t		len_s2;
 
 	j = 0;
 	i = 0;
+	len_s1 = ft_strlen(s1);
+	len_s2 = ft_strlen(s2); 
 	if (!s1 && !s2)
 		return (NULL);
-	combinedstring = malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 2));
+	combinedstring = malloc(sizeof(char) * (len_s1 + len_s2 + 1));
 	if (!combinedstring)
-		return (0);
-	while (s1 != NULL && s1[i] != '\0')
+		return (NULL);
+	while (i < len_s1)
 	{
 		combinedstring[i] = s1[i];
 		i++;
 	}
-	while (s2[j] != '\0')
+	while (j < len_s2)
 		combinedstring[i++] = s2[j++];
 	combinedstring[i] = '\0';
 	free(s1);

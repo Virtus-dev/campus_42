@@ -4,9 +4,9 @@
 
 int main()
 {
-    int fd;
-    char *str;
-    fd = open("prueba.txt", O_RDONLY);
+	int fd;
+	char *str;
+    fd = open("41_no_nl", O_RDONLY);
     str = get_next_line(fd);
     while (str != NULL)
     {
