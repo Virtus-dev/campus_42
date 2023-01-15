@@ -6,7 +6,7 @@
 /*   By: arigonza < arigonza@student.42malaga.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 18:21:34 by arigonza          #+#    #+#             */
-/*   Updated: 2023/01/14 12:28:31 by arigonza         ###   ########.fr       */
+/*   Updated: 2023/01/15 19:02:15 by arigonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,12 +93,10 @@ char	*read_file(int fd, char *backup)
 char	*get_next_line(int fd)
 {
 	char			*line;
-	int				line_length;
 	static char		*backup = NULL;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
-	line_length = 0;
 	backup = read_file(fd, backup);
 	if (!backup)
 		return (NULL);
