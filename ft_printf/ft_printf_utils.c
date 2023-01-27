@@ -6,7 +6,7 @@
 /*   By: arigonza < arigonza@student.42malaga.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 18:30:06 by arigonza          #+#    #+#             */
-/*   Updated: 2023/01/27 11:49:37 by arigonza         ###   ########.fr       */
+/*   Updated: 2023/01/27 19:56:14 by arigonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,16 @@ void	ft_putstr(char *str, int *count)
 	int	i;
 
 	i = 0;
-	while (str[i])
-		ft_putchar(str[i++], count);
+	if (!str)
+	{
+		write(1,"(null)",6);
+		(*count) += 6;
+	}
+	else
+	{
+		while (str[i])
+			ft_putchar(str[i++], count);
+	}
 }
 
 void	ft_putunsignednbr(unsigned int nbr, int *count)
@@ -75,8 +83,13 @@ void	ft_printhexa(unsigned long nbr, char h,int *count)
 		ft_putchar(str[i], count);
 }
 
-void	printptr(void *ptr, int *count)
+void	ft_printptr(void *ptr, int *count)
 {
-	ft_putstr("0X", count);
+	if (ptr == NULL)
+		ft_putstr("(nil)", count);
+	else
+	{	
+	ft_putstr("0x", count);
 	ft_printhexa((unsigned long)ptr, 'x', count);
+	}
 }

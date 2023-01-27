@@ -6,7 +6,7 @@
 /*   By: arigonza <arigonza@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 15:21:48 by arigonza          #+#    #+#             */
-/*   Updated: 2023/01/25 17:43:15 by arigonza         ###   ########.fr       */
+/*   Updated: 2023/01/27 19:36:59 by arigonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	main(void)
 	unit = -1;
 	len = 0;
 	c = 'Y';
-	string = "Yes, strings are working 1234";
+	string = NULL;
 	nbr = 42;
 	ngbr = -2147483647;
 	len = ft_printf("characers: %c \n", c);

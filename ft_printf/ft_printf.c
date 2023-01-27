@@ -6,7 +6,7 @@
 /*   By: arigonza < arigonza@student.42malaga.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 13:11:36 by arigonza          #+#    #+#             */
-/*   Updated: 2023/01/25 17:55:56 by arigonza         ###   ########.fr       */
+/*   Updated: 2023/01/27 12:53:40 by arigonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,14 @@ void	ft_format(va_list args, const char format, int *count)
 		ft_putchar(va_arg(args, int), count);
 	if (format == 's')
 		ft_putstr(va_arg(args, char *), count);
-	if (format == 'd'|| format == 'i')
+	if (format == 'd' || format == 'i')
 		ft_putnbr(va_arg(args,int), count);
 	if (format == 'u')
 		ft_putunsignednbr(va_arg(args, unsigned int), count);
 	if (format == 'x' || format == 'X')
-		ft_printhexa(va_arg(args, int), format, count);
+		ft_printhexa(va_arg(args, unsigned int), format, count);
+	if (format == 'p')
+		ft_printptr(va_arg(args, void *), count);
 	if (format == '%')
 		ft_putchar('%', count);
 }
@@ -43,7 +45,7 @@ int	ft_printf(const char *string, ...)
 		{
 			
 			ft_format(args, string[++i], &count);
-			i += 2;
+			i ++;
 		}
 		else
 			ft_putchar(string[i++], &count);
