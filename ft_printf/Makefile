@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: arigonza <arigonza@student.42malaga.com>   +#+  +:+       +#+         #
+#    By: arigonza < arigonza@student.42malaga.com>  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/20 17:15:35 by arigonza          #+#    #+#              #
-#    Updated: 2023/01/25 21:03:54 by arigonza         ###   ########.fr        #
+#    Updated: 2023/02/19 11:10:49 by arigonza         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,6 @@ all : $(NAME)
 
 clean :
 	$(RM) $(RMFLAG) $(OBJS)
-
 
 fclean : clean
 		$(RM) $(RMFLAG) $(NAME)

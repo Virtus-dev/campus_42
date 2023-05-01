@@ -6,11 +6,17 @@
 /*   By: arigonza < arigonza@student.42malaga.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 13:11:36 by arigonza          #+#    #+#             */
-/*   Updated: 2023/01/27 12:53:40 by arigonza         ###   ########.fr       */
+/*   Updated: 2023/02/19 11:08:58 by arigonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+void	ft_putchar(int c, int *count)
+{
+	write(1, &c, 1);
+	(*count)++;
+}
 
 void	ft_format(va_list args, const char format, int *count)
 {
@@ -19,7 +25,7 @@ void	ft_format(va_list args, const char format, int *count)
 	if (format == 's')
 		ft_putstr(va_arg(args, char *), count);
 	if (format == 'd' || format == 'i')
-		ft_putnbr(va_arg(args,int), count);
+		ft_putnbr(va_arg(args, int), count);
 	if (format == 'u')
 		ft_putunsignednbr(va_arg(args, unsigned int), count);
 	if (format == 'x' || format == 'X')
@@ -33,8 +39,8 @@ void	ft_format(va_list args, const char format, int *count)
 int	ft_printf(const char *string, ...)
 {	
 	va_list	args;
-	int	i;
-	int	count;
+	int		i;
+	int		count;
 
 	i = 0;
 	count = 0;
@@ -43,7 +49,6 @@ int	ft_printf(const char *string, ...)
 	{
 		if (string[i] == '%')
 		{
-			
 			ft_format(args, string[++i], &count);
 			i ++;
 		}

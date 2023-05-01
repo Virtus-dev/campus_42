@@ -6,17 +6,11 @@
 /*   By: arigonza < arigonza@student.42malaga.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 18:30:06 by arigonza          #+#    #+#             */
-/*   Updated: 2023/01/27 19:56:14 by arigonza         ###   ########.fr       */
+/*   Updated: 2023/02/19 11:45:22 by arigonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
-void	ft_putchar(int c, int *count)
-{
-	write(1, &c, 1);
-	(*count)++;
-}
 
 void	ft_putnbr(int n, int *count)
 {
@@ -29,7 +23,6 @@ void	ft_putnbr(int n, int *count)
 			ft_putchar('-', count);
 			n = n * -1;
 		}
-
 		if (n > 9)
 			ft_putnbr(n / 10, count);
 		ft_putchar((n % 10) + '0', count);
@@ -43,7 +36,7 @@ void	ft_putstr(char *str, int *count)
 	i = 0;
 	if (!str)
 	{
-		write(1,"(null)",6);
+		write(1, "(null)", 6);
 		(*count) += 6;
 	}
 	else
@@ -55,14 +48,14 @@ void	ft_putstr(char *str, int *count)
 
 void	ft_putunsignednbr(unsigned int nbr, int *count)
 {
-	if (nbr > 9)	
+	if (nbr > 9)
 		ft_putunsignednbr(nbr / 10, count);
 	ft_putchar((nbr % 10) + '0', count);
 }
 
-void	ft_printhexa(unsigned long nbr, char h,int *count)
+void	ft_printhexa(unsigned long long nbr, char h, int *count)
 {
-	int	i;
+	int		i;
 	char	*base;
 	char	str[25];
 
@@ -85,11 +78,11 @@ void	ft_printhexa(unsigned long nbr, char h,int *count)
 
 void	ft_printptr(void *ptr, int *count)
 {
-	if (ptr == NULL)
-		ft_putstr("(nil)", count);
+	if (!ptr)
+		ft_putstr("0x0", count);
 	else
 	{	
-	ft_putstr("0x", count);
-	ft_printhexa((unsigned long)ptr, 'x', count);
+		ft_putstr("0x", count);
+		ft_printhexa((unsigned long long)ptr, 'x', count);
 	}
 }
