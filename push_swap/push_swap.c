@@ -10,46 +10,60 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "push_swap.h"
 
-
-node	*create_node(int value)
+void	ft_sort_stack(t_stack* stackA, t_stack* stackB)
 {
-    node* newNode = (node*) malloc(sizeof(node));
-	newNode->value = value;
-	newNode->next = NULL;
-	return (newNode);
+    while (stackA->head != NULL)
+    {
+        int max_value = stackA->head->value;
+        int max_position = 0;
+        node* current = stackA->head;
+        int position = 0;
+
+        // Encuentra el valor máximo y su posición en stackA
+        while (current != NULL)
+        {
+            if (current->value > max_value)
+            {
+                max_value = current->value;
+                max_position = position;
+            }
+            current = current->next;
+            position++;
+        }
+
+        if (max_position == 0)
+        {
+            ft_pb(stackB, stackA); // Empuja el valor máximo a stackB
+        }
+        else if (max_position <= stackA->size / 2)
+        {
+            while (max_position > 0)
+            {
+                ft_ra(stackA); // Rota stackA en dirección ra para mover el valor máximo a la cima
+                max_position--;
+            }
+            ft_push_b(stackA, stackB); // Empuja el valor máximo a stackB
+        }
+        else
+        {
+            max_position = stackA->size - max_position;
+            while (max_position > 0)
+            {
+                ft_rra(stackA); // Rota stackA en dirección rra para mover el valor máximo a la cima
+                max_position--;
+            }
+            ft_pb(stackB, stackA); // Empuja el valor máximo a stackB
+        }
+    }
+
+    while (stackB->head != NULL)
+    {
+        ft_pa(stackA, stackB); // Mueve los elementos de stackB a stackA en orden descendente
+    }
 }
 
-node	*pop(t_stack* stack)
-{
-	if (!stack || stack->head == NULL)
-	node* tmp = stack->head;
-	stack->head = stack->head->next;
-	tmp->next = NULL;
-	return (tmp);
-}
-
-void	insert_node_head(t_stack* stack, node* node)
-{
-	if (!stack || !node)
-		return;
-	node* tmp = stack->head;
-	stack->head = node;
-	stack->head->next = tmp;
-}
-
-void	insert_node_tail(t_stack* stack, node* node)
-{
-	if (!stack || !node)
-		return;
-	node* current = stack->head;
-	while (current->next)
-	{
-		current = current->next;
-	}
-	current->next = node;
-	//node->next = NULL;
-}
 
 void	ft_sa(t_stack* stackA)
 {
@@ -97,7 +111,7 @@ void	ft_rb(t_stack* stackB)
 	insert_node_tail(stackB, pop(stackB));
 }
 
-void	ft_rr(t_satck* stackA, t_stack* stackB)
+void	ft_rr(t_stack* stackA, t_stack* stackB)
 {
 	insert_node_tail(stackA, pop(stackA));
 	insert_node_tail(stackB, pop(stackB));
@@ -137,14 +151,8 @@ void	ft_rrb(t_stack* stackB)
 	stackB->head = current;
 }
 
-void	ft_rrr(t_satck* stackA, t_stack* stackB)
+void	ft_rrr(t_stack* stackA, t_stack* stackB)
 {
 	ft_rra(stackA);
 	ft_rrb(stackB);
 }
-
-void destroy_node(node* node)
-{
-	free(node);
-}
-
