@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: arigonza < arigonza@student.42malaga.com>  +#+  +:+       +#+         #
+#    By: arigonza <arigonza@student.42malaga.com>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/09/20 17:15:35 by arigonza          #+#    #+#              #
-#    Updated: 2023/02/19 11:10:49 by arigonza         ###   ########.fr        #
+#    Created: 2023/05/01 17:52:08 by arigonza          #+#    #+#              #
+#    Updated: 2023/05/01 17:52:20 by arigonza         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,8 +23,10 @@ RM = rm
 
 RMFLAG = -f
 
-SRC =	./ft_printf.c\
-	./ft_printf_utils.c\
+INCLUDES = ./ft_printf.h
+
+SRC = ./ft_printf.c\
+      ./ft_printf_utils.c
 
 OBJS = $(SRC:.c=.o)
 
@@ -34,11 +36,11 @@ clean :
 	$(RM) $(RMFLAG) $(OBJS)
 
 fclean : clean
-		$(RM) $(RMFLAG) $(NAME)
+	$(RM) $(RMFLAG) $(NAME)
 
 re : fclean all
 
-.c.o : $(SRC) $(INCLUDES)
+%o : $(SRC) $(INCLUDES)
 	$(CC) $(FLAGS) -c $< -o $(<:.c=.o)
 	
 $(NAME) : $(OBJS)

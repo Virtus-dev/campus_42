@@ -6,7 +6,7 @@
 /*   By: arigonza < arigonza@student.42malaga.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 15:21:48 by arigonza          #+#    #+#             */
-/*   Updated: 2023/02/19 15:13:26 by arigonza         ###   ########.fr       */
+/*   Updated: 2023/05/02 15:56:18 by arigonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,5 +63,5 @@ int	main(void)
 	printf("%i \n", len);
 	len = printf(" %d %d %d %d \n", INT_MAX, INT_MIN, 0, -42);
 	printf("%i \n", len);
-	printf("%w \n", );
+	printf("%i \n", len);
 }

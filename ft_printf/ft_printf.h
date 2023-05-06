@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arigonza < arigonza@student.42malaga.com>  +#+  +:+       +#+        */
+/*   By: arigonza <arigonza@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/17 13:35:27 by arigonza          #+#    #+#             */
-/*   Updated: 2023/02/19 11:41:36 by arigonza         ###   ########.fr       */
+/*   Created: 2023/05/01 17:49:07 by arigonza          #+#    #+#             */
+/*   Updated: 2023/05/01 17:51:03 by arigonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
