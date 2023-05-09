@@ -6,7 +6,7 @@
 /*   By: arigonza < arigonza@student.42malaga.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 17:24:01 by arigonza          #+#    #+#             */
-/*   Updated: 2022/10/18 16:20:53 by arigonza         ###   ########.fr       */
+/*   Updated: 2023/05/09 15:04:55 by arigonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <string.h>
+# include "ft_printf.h"
 
 /*
  * Struct

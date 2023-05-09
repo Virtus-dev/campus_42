@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   client.c                                           :+:      :+:    :+:   */
+/*   client_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: arigonza < arigonza@student.42malaga.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/06 14:45:30 by arigonza          #+#    #+#             */
-/*   Updated: 2023/05/09 15:40:27 by arigonza         ###   ########.fr       */
+/*   Created: 2023/05/09 16:50:49 by arigonza          #+#    #+#             */
+/*   Updated: 2023/05/09 16:53:28 by arigonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,10 @@ void	send(int pid, char byte)
 	}
 }
 
-void	ft_hanldled(int signal)
+void	ft_handled(int signal)
 {
 	if (signal == SIGUSR1)
-		ft_printf(FBLUE"message handled correctly\n"NONE);
+		ft_printf(FBLUE "message handled correctly\n" NONE);
 }
 
 int	main(int argc, char **argv)
@@ -42,12 +42,12 @@ int	main(int argc, char **argv)
 	i = -1;
 	if (argc != 3)
 	{
-		ft_printf(FRED"Wrong number of arguments.\n");
+		ft_printf(FRED "Wrong number of arguments.\n");
 		ft_printf("Try with the following format: ./client \"PID\" \"message\"\n");
 		return (0);
 	}
 	pid = ft_atoi(argv[1]);
-	signal(SIGUSR1, ft_hanldled);
+	signal(SIGUSR1, ft_handled);
 	while (argv[2][++i])
 		send(pid, argv[2][i]);
 	send(pid, '\0');

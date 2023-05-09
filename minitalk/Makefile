@@ -1,24 +1,34 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: arigonza <arigonza@student.42malaga.com>   +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/05/06 14:15:10 by arigonza          #+#    #+#              #
-#    Updated: 2023/05/06 15:18:40 by arigonza         ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
+CFLAGS  = -Wall -Wextra -Werror
 
-NAME = MINITALK
+CLIENT = client 
 
-CC = gcc
+SERVER = server
 
-CFLAGS = -Wall -Werror -Wextra
+LIBFT = libft/libft.a
 
-SRC = ./clientc \
-	  ./server.c \
+INC = -I libft/includes
 
-OBJ = $(SRC:.c=.o)
+all: $(CLIENT) $(SERVER)
 
-all : $(NAME)
+$(CLIENT): $(LIBFT) client.c
+	@gcc $(CFLAGS) $(INC) -o $(CLIENT) client.c $(LIBFT)
+
+$(SERVER): $(LIBFT) server.c
+	@gcc $(CFLAGS) $(INC) -o $(SERVER) server.c $(LIBFT)
+
+$(LIBFT):
+	@make -C libft
+	@echo 🔥 🔥 Making Executables ✅ ✅
+
+clean:
+	@make -C libft clean
+	@echo 🔥 🔥 Deleting all .o Files 🗑️ 🗑️
+
+fclean: clean
+	@make -C libft fclean
+	@rm -rf $(CLIENT) $(SERVER)
+	@echo  🔥 🔥 Deleting executables files 🗑️ 🗑️
+
+re: fclean all
+
+.PHONY: all clean fclean re
