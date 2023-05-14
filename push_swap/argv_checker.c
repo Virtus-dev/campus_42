@@ -1,4 +1,14 @@
-
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   argv_checker.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: arigonza <arigonza@student.42malaga.com    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/05/14 21:51:58 by arigonza          #+#    #+#             */
+/*   Updated: 2023/05/14 21:52:02 by arigonza         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "push_swap.h"
 
@@ -12,23 +22,25 @@ int    *ft_param_checker(int argc, char* argv[])
 	values = (int*) malloc ((argc - 1) * sizeof(int));
 	i = 0;
 	j = 0;
+	if (!values)
+		return(free(values), 0);
 	if (argc > 1)
 	{
 		while (i < (argc - 1))
 		{
-			splited[i] = ft_split(argv[i + 1], ' ');
+			splited = ft_split(argv[1], ' ');
 			while (splited[i])
 			{
 				if (ft_isdup(splited) == 1)
 				{
 					free(values);
-					free(splited);
+					ft_free_matrix(splited);
 					return (0);
 				}
 				if (ft_isdigit(splited[i][j]) == 0)
 				{
 					free(values);
-					free(splited);
+					ft_free_matrix(splited);
 					return (0);
 				}
 				values[j++] = ft_atoi(splited[i++]);
@@ -39,6 +51,7 @@ int    *ft_param_checker(int argc, char* argv[])
 	return (0);
 }
 
+// Checks if there's duplicated stuff on a matrix
 int		ft_isdup(char** matrix)
 {
 	int	i;
@@ -61,7 +74,7 @@ int		ft_isdup(char** matrix)
 		{
 			if (set != NULL && (ft_strcmp(set[i][j], value[j]) == 0))
 			{
-				free(set);
+				ft_free_matrix(set);
 				free(value);
 				return 1;
 			}

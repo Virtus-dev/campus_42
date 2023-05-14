@@ -21,3 +21,15 @@ int	ft_matrix_size(char** matrix)
 		i++;
 	return (i);
 }
+
+void	ft_free_matrix(char** matrix)
+{
+	int	i;
+
+	i = 0;
+	if (!matrix)
+		return;
+	while (matrix)
+		free(matrix[i]);
+	free(matrix);
+}

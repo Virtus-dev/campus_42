@@ -32,6 +32,15 @@ typedef struct t_stack
 	int		size;
 }t_stack;
 
+//Colors Start
+# define FRED "\033[0;31m"
+# define FGREEN "\033[0;32m"
+# define FYELLOW "\033[0;33m"
+# define FBLUE "\033[0;34m"
+# define FPURPLE "\033[0;35m"
+# define NONE "\033[0;37m"
+//Colors End
+
 // utils
 node	*create_node(int value);
 node	*pop(t_stack* stack);
@@ -40,6 +49,7 @@ void	insert_node_tail(t_stack* stack, node* node);
 void	destroy_node(node* node);
 // param_aux_functions
 int		ft_matrix_size(char** matrix);
+void	ft_free_matrix(char** matrix);
 // swap operations
 void	ft_sa(t_stack* stackA);
 void	ft_sb(t_stack* stackB);
