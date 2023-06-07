@@ -6,7 +6,7 @@
 /*   By: arigonza <arigonza@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/14 21:51:58 by arigonza          #+#    #+#             */
-/*   Updated: 2023/06/07 23:01:35 by arigonza         ###   ########.fr       */
+/*   Updated: 2023/06/07 23:30:40 by arigonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,12 @@ int    *ft_param_checker(int argc, char* argv[])
 	}
 	if (ft_isdup(ft_parse(splited)))
 		return (ft_free_matrix(splited), 0);
+	if(!ft_is_sorted(ft_parse(splited)))
+		return (ft_free_matrix(splited), 0);
 	return (1);
 }
 
-int	ft_parse(char** splited)
+int*	ft_parse(char** splited)
 {
 	int		i;
 	int		j;
