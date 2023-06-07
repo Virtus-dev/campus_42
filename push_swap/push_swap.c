@@ -57,11 +57,10 @@ void	ft_sort_stack(t_stack* stackA, t_stack* stackB)
             ft_pb(stackB, stackA); // Empuja el valor máximo a stackB
         }
     }
-
     while (stackB->head != NULL)
     {
         ft_pa(stackA, stackB); // Mueve los elementos de stackB a stackA en orden descendente
-    }
+    }       
 }
 
 

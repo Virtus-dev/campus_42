@@ -11,12 +11,15 @@ INC = -I libft/includes
 all : $(PUSH_SWAP)
 
 $(PUSH_SWAP) : $(LIBFT) $(SRC)
+	@echo "|---------------------------|"
+	@echo "|  Compiling Push_swap🤖🤖 |"
+	@echo "|---------------------------|"
 	@gcc $(CFLAGS) $(INC) -o $(PUSH_SWAP) $(SRC) $(LIBFT)
 
 $(LIBFT) :
 	@make -s -C libft
 	@echo "|---------------------------|"
-	@echo "|  Compiling Push_swap🤖🤖 |"
+	@echo "|    Compiling libft📚📚	  |"
 	@echo "|---------------------------|"
 
 clean :

@@ -17,18 +17,25 @@ $(SERVER): $(LIBFT) server.c
 	@gcc $(CFLAGS) $(INC) -o $(SERVER) server.c $(LIBFT)
 
 $(LIBFT):
-	@make -C libft
-	@echo 🔥 🔥 Making Executables ✅ ✅
+	@make -s -C libft
+	@echo "|-----------------------------------|"
+	@echo "|       Compiling libft📚 ✅✅     |"
+	@echo "|-----------------------------------|"
+
+bonus : all
 
 clean:
-	@make -C libft clean
+	@make -s -C libft clean
 	@echo 🔥 🔥 Deleting all .o Files 🗑️ 🗑️
 
 fclean: clean
 	@make -C libft fclean
 	@rm -rf $(CLIENT) $(SERVER)
 	@echo  🔥 🔥 Deleting executables files 🗑️ 🗑️
+	@echo "<----------------------------------->"
 
 re: fclean all
 
-.PHONY: all clean fclean re
+rebonus : fclean all
+
+.PHONY: all bonus clean fclean re rebonus

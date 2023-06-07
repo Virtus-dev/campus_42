@@ -1,52 +1,17 @@
 
 #include "push_swap.h"
 
-node	*create_node(int value)
+int ft_is_sorted(int* values)
 {
-    node* newNode = (node*) malloc(sizeof(node));
-	newNode->value = value;
-	newNode->next = NULL;
-	return (newNode);
-}
+    int i;
+    int size;
 
-node	*pop(t_stack* stack)
-{
-	node*	tmp;
-
-	if (!stack || stack->head == NULL)
-	tmp = stack->head;
-	stack->head = stack->head->next;
-	tmp->next = NULL;
-	return (tmp);
-}
-
-void	insert_node_head(t_stack* stack, node* node)
-{
-	node*	tmp;
-
-	if (!stack || !node)
-		return;
-	tmp = stack->head;
-	stack->head = node;
-	stack->head->next = tmp;
-}
-
-void	insert_node_tail(t_stack* stack, node* node)
-{
-	node*	current;
-
-	if (!stack || !node)
-		return;
-	current = stack->head;
-	while (current->next)
-	{
-		current = current->next;
-	}
-	current->next = node;
-	node->next = NULL;
-}
-
-void	destroy_node(node* node)
-{
-	free(node);
+    i = 0;
+    size = sizeof(values) / sizeof(values[0]);
+    while (i < size)
+    {
+        if (values[i] > values[i + 1])
+            return (0);
+    }
+    return (1);
 }

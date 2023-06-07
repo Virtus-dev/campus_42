@@ -41,15 +41,19 @@ typedef struct t_stack
 # define NONE "\033[0;37m"
 //Colors End
 
-// utils
+// list_utils
 node	*create_node(int value);
 node	*pop(t_stack* stack);
 void	insert_node_head(t_stack* stack, node* node);
 void	insert_node_tail(t_stack* stack, node* node);
 void	destroy_node(node* node);
+// utils
+int		ft_is_sorted(int* values);
 // param_aux_functions
 int		ft_matrix_size(char** matrix);
 void	ft_free_matrix(char** matrix);
+int		is_space(char c);
+int		ft_isdup(int* nb);
 // swap operations
 void	ft_sa(t_stack* stackA);
 void	ft_sb(t_stack* stackB);
