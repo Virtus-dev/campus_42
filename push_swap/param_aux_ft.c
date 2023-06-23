@@ -6,7 +6,7 @@
 /*   By: arigonza <arigonza@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 19:26:06 by arigonza          #+#    #+#             */
-/*   Updated: 2023/06/07 22:25:40 by arigonza         ###   ########.fr       */
+/*   Updated: 2023/06/23 11:55:49 by arigonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,38 +29,42 @@ void	ft_free_matrix(char** matrix)
 	i = 0;
 	if (!matrix)
 		return;
-	while (matrix)
-		free(matrix[i]);
+	while (matrix[i])
+		free(matrix[i++]);
 	free(matrix);
 }
 
-// checks if there's o there's not a space or tabs
-int	is_space(char c)
+// Checks if is, or is not a number
+int	ft_is_nbr(char* s)
 {
 	int	i;
-	
+
 	i = 0;
-	if ((c >= 9 && c <= 13) || c == ' ')
-		return (1);
-	else
-		return (0);		
+	while (s[i] && (s[i] == '+' || s[i] == '-'))
+		i++;
+	while (s[i])
+	{
+		if (!ft_isdigit(s[i]))
+			return (0);
+		i++;
+	}
+	return (1);
 }
 
 // Checks if there's duplicates on a int*
-int		ft_isdup(int* nb)
+
+int		ft_isdup(char** argv)
 {
 	int	i;
 	int	j;
-	int	size;
 
 	i = 0;
-	size = sizeof(nb) / sizeof(nb[0]);
-	while (i < size)
+	while (argv[i])
 	{
 		j = i + 1;
-		while (j < size)
+		while (argv[j])
 		{
-			if (nb[i] == nb[j])
+			if (argv[i] == argv[j])
 				return (1);
 			j++;
 		}

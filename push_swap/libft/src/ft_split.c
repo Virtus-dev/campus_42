@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arigonza < arigonza@student.42malaga.com>  +#+  +:+       +#+        */
+/*   By: arigonza <arigonza@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 15:05:28 by arigonza          #+#    #+#             */
-/*   Updated: 2022/10/06 16:47:24 by arigonza         ###   ########.fr       */
+/*   Updated: 2023/06/22 15:36:03 by arigonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ char	**ft_split(const char *s, char c)
 	found = 0;
 	splitedstr = (char**)malloc (sizeof(char *) * (ft_counterwords(s, c) + 1));
 	if (!splitedstr)
-		return (free(splitedstr),0);
+		return (free(splitedstr), NULL);
 	while (s[i] != '\0')
 	{
 		while (s[i] == c && s[i] != '\0')
@@ -54,6 +54,6 @@ char	**ft_split(const char *s, char c)
 		if (i > 0 && s[i - 1] != c)
 			splitedstr[found++] = ft_substr(s, j, (i - j));
 	}
-	splitedstr[found] = NULL;
+	splitedstr[found] = '\0';
 	return (splitedstr);
 }

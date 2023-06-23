@@ -12,47 +12,50 @@
 
 #include "push_swap.h"
 
+
 void	ft_sort_stack(t_stack* stackA, t_stack* stackB)
 {
     while (stackA->head != NULL)
     {
-        int max_value = stackA->head->value;
-        int max_position = 0;
-        node* current = stackA->head;
+        int min_value = INT_MAX;
+        int min_position = 0;
+        Node* current = stackA->head;
         int position = 0;
 
         // Encuentra el valor máximo y su posición en stackA
         while (current != NULL)
         {
-            if (current->value > max_value)
+            if (current->value < min_value)
             {
-                max_value = current->value;
-                max_position = position;
+                min_value = current->value;
+                min_position = position;
             }
             current = current->next;
             position++;
         }
 
-        if (max_position == 0)
+        if (min_position == 0)
         {
             ft_pb(stackB, stackA); // Empuja el valor máximo a stackB
         }
-        else if (max_position <= stackA->size / 2)
+        else if (min_position <= stackA->size / 2)
         {
-            while (max_position > 0)
+            while (min_position > 0)
             {
                 ft_ra(stackA); // Rota stackA en dirección ra para mover el valor máximo a la cima
-                max_position--;
+               
+				min_position--;
             }
-            ft_push_b(stackA, stackB); // Empuja el valor máximo a stackB
+            ft_pb(stackB, stackA); // Empuja el valor máximo a stackB
         }
         else
         {
-            max_position = stackA->size - max_position;
-            while (max_position > 0)
+            min_position = stackA->size - min_position;
+            while (min_position > 0)
             {
                 ft_rra(stackA); // Rota stackA en dirección rra para mover el valor máximo a la cima
-                max_position--;
+                ft_printf("rra\n");
+				min_position--;
             }
             ft_pb(stackB, stackA); // Empuja el valor máximo a stackB
         }
@@ -68,8 +71,8 @@ void	ft_sa(t_stack* stackA)
 {
 	if (!stackA || !stackA->head)
 		return;
-	node* first = pop(stackA);
-	node* second = pop(stackA);
+	Node* first = pop(stackA);
+	Node* second = pop(stackA);
 	insert_node_head(stackA, first);
 	insert_node_head(stackA, second);
 }
@@ -77,14 +80,15 @@ void	ft_sa(t_stack* stackA)
 void	ft_pa(t_stack* stackA, t_stack* stackB)
 {
 	insert_node_head(stackA, pop(stackB));
+	ft_printf("pa\n");
 }
 
 void	ft_sb(t_stack* stackB)
 {
 	if (!stackB || !stackB->head)
 		return;
-	node* first = pop(stackB);
-	node* second = pop(stackB);
+	Node* first = pop(stackB);
+	Node* second = pop(stackB);
 	insert_node_head(stackB, first);
 	insert_node_head(stackB, second);
 }
@@ -92,6 +96,7 @@ void	ft_sb(t_stack* stackB)
 void	ft_pb(t_stack* stackB, t_stack* stackA)
 {
 	insert_node_head(stackB, pop(stackA));
+	ft_printf("pb\n");
 }
 
 void	ft_ss(t_stack* stackA, t_stack* stackB)
@@ -103,6 +108,7 @@ void	ft_ss(t_stack* stackA, t_stack* stackB)
 void	ft_ra(t_stack* stackA)
 {
 	insert_node_tail(stackA, pop(stackA));
+	ft_printf("ra\n");
 }
 
 void	ft_rb(t_stack* stackB)
@@ -120,15 +126,15 @@ void	ft_rra(t_stack* stackA)
 {
 	if (!stackA || !stackA->head || !stackA->head->next)
 		return;
-	node* prev = NULL;
-	node* current = stackA->head;
+	Node* prev = NULL;
+	Node* current = stackA->head;
 	while (current->next)
 	{
 		prev = current;
 		current = current->next;
 	}
 	prev->next = NULL;
-	current = current->next;
+	//current = current->next;
 	current->next = stackA->head;
 	stackA->head = current;
 }
@@ -137,8 +143,8 @@ void	ft_rrb(t_stack* stackB)
 {
 	if (!stackB || !stackB->head || !stackB->head->next)
 		return;
-	node* prev = NULL;
-	node* current = stackB->head;
+	Node* prev = NULL;
+	Node* current = stackB->head;
 	while (current->next)
 	{
 		prev = current;

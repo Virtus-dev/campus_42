@@ -6,7 +6,7 @@
 /*   By: arigonza <arigonza@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 17:24:01 by arigonza          #+#    #+#             */
-/*   Updated: 2023/06/07 21:36:50 by arigonza         ###   ########.fr       */
+/*   Updated: 2023/06/16 16:39:18 by arigonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ char	*ft_strdup(const char *s1);
 /*
  * String
  */
+int		ft_is_space(char c);
 size_t	ft_strlcpy(char *dst, const char *src, size_t size);
 size_t	ft_strlcat(char *dst, const char *src, size_t size);
 size_t	ft_strlen(const char *s);
@@ -54,7 +55,6 @@ char	*ft_strchr(const char *str, int c);
 char	*ft_strrchr(const char *str, int c);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
 int		ft_strcmp(const char* s1, const char* s2);
-int		ft_isdup(int argc, char* argv[]);
 char	*ft_strnstr(const char *haystack, const char *needle, size_t len);
 char	*ft_substr(const char *s, unsigned int start, size_t len);
 char	*ft_strjoin(const char *s1, const char *s2);
@@ -76,7 +76,7 @@ int		ft_isalnum(int c);
 int		ft_tolower(int c);
 int		ft_toupper(int c);
 int		ft_atoi(const char *str);
-long	ft_long_atoi(const char *str);
+long	ft_atol(const char *str);
 char	*ft_itoa(int n);
 void	ft_putnbr_fd(int n, int fd);
 /*

@@ -10,25 +10,26 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP.H
-#define PUSH_SWAP.H
+#ifndef PUSH_SWAP_H
+#define PUSH_SWAP_H
 
 #include <stdlib.h>
 #include <unistd.h>
 #include <limits.h>
 #include <stddef.h>
 #include <stdio.h>
-#include "libft/libft.h"
+#include "libft/includes/libft.h"
+#include "libft/includes/ft_printf.h"
 
-typedef struct node
+typedef struct Node
 {
     int	value;
-	struct node* next;
-}node;
+	struct Node* next;
+}Node;
 
 typedef struct t_stack
 {
-	node*	head;
+	Node*	head;
 	int		size;
 }t_stack;
 
@@ -40,20 +41,27 @@ typedef struct t_stack
 # define FPURPLE "\033[0;35m"
 # define NONE "\033[0;37m"
 //Colors End
-
+//void	ft_radix_sort(t_stack* stackA, t_stack* stackB);
+void	ft_sort_stack(t_stack* stackA, t_stack* stackB);
 // list_utils
-node	*create_node(int value);
-node	*pop(t_stack* stack);
-void	insert_node_head(t_stack* stack, node* node);
-void	insert_node_tail(t_stack* stack, node* node);
-void	destroy_node(node* node);
+Node	*create_node(int value);
+Node	*pop(t_stack* stack);
+void	insert_node_head(t_stack* stack, Node* node);
+void	insert_node_tail(t_stack* stack, Node* node);
+void	destroy_node(Node* node);
 // utils
-int		ft_is_sorted(int* values);
+int		ft_is_sorted(int* values, int size);
+void	ft_print_stack(t_stack* stack, char c);
+int		get_max_value(t_stack* stack);
+void	ft_initialize_stack(t_stack* stack);
+// argv_checker
+int		ft_param_checker(int argc, char** argv);
+int		*ft_parse(char** splited, int argc);
 // param_aux_functions
 int		ft_matrix_size(char** matrix);
 void	ft_free_matrix(char** matrix);
-int		is_space(char c);
-int		ft_isdup(int* nb);
+int		ft_isdup(char** argv);
+int		ft_is_nbr(char* s);
 // swap operations
 void	ft_sa(t_stack* stackA);
 void	ft_sb(t_stack* stackB);
