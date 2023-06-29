@@ -6,7 +6,7 @@
 /*   By: arigonza <arigonza@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 17:24:01 by arigonza          #+#    #+#             */
-/*   Updated: 2023/06/16 16:39:18 by arigonza         ###   ########.fr       */
+/*   Updated: 2023/06/26 14:19:31 by arigonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ char	*ft_strmapi(const char *s, char (*f)(unsigned int, char));
 void	ft_striteri(char *s, void (*f)(unsigned int, char*));
 void	ft_putchar_fd(char c, int fd);
 void	ft_putstr_fd(char *s, int fd);
+void	ft_putstr(char* s);
 void	ft_putendl_fd(char *s, int fd);
 /*
  * Type

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arigonza < arigonza@student.42malaga.com>  +#+  +:+       +#+        */
+/*   By: arigonza <arigonza@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 18:30:06 by arigonza          #+#    #+#             */
-/*   Updated: 2023/02/19 11:45:22 by arigonza         ###   ########.fr       */
+/*   Updated: 2023/06/26 14:24:49 by arigonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	ft_putnbr(int n, int *count)
 {
 	if (n == -2147483648)
-		ft_putstr("-2147483648", count);
+		ft_putstrc("-2147483648", count);
 	else
 	{
 		if (n < 0)
@@ -29,7 +29,7 @@ void	ft_putnbr(int n, int *count)
 	}
 }
 
-void	ft_putstr(char *str, int *count)
+void	ft_putstrc(char *str, int *count)
 {
 	int	i;
 
@@ -79,10 +79,10 @@ void	ft_printhexa(unsigned long long nbr, char h, int *count)
 void	ft_printptr(void *ptr, int *count)
 {
 	if (!ptr)
-		ft_putstr("0x0", count);
+		ft_putstrc("0x0", count);
 	else
 	{	
-		ft_putstr("0x", count);
+		ft_putstrc("0x", count);
 		ft_printhexa((unsigned long long)ptr, 'x', count);
 	}
 }

@@ -6,32 +6,24 @@
 /*   By: arigonza <arigonza@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 19:26:06 by arigonza          #+#    #+#             */
-/*   Updated: 2023/06/23 11:55:49 by arigonza         ###   ########.fr       */
+/*   Updated: 2023/06/28 09:12:40 by arigonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	ft_matrix_size(char** matrix)
+int ft_is_sorted(int* values, int size)
 {
-	int	i;
+    int i;
 
-	i = 0;
-	while (matrix[i])
-		i++;
-	return (i);
-}
-
-void	ft_free_matrix(char** matrix)
-{
-	int	i;
-
-	i = 0;
-	if (!matrix)
-		return;
-	while (matrix[i])
-		free(matrix[i++]);
-	free(matrix);
+    i = 0;
+    while (i < size)
+    {
+        if (values[i] > values[i + 1])
+            return (0);
+        i++;
+    }
+    return (1);
 }
 
 // Checks if is, or is not a number
@@ -51,20 +43,27 @@ int	ft_is_nbr(char* s)
 	return (1);
 }
 
-// Checks if there's duplicates on a int*
+int	ft_str_nbr_cmp(const char* s1, const char* s2)
+{
+	while (*s1 == '+' || *s1 == '0')
+		s1++;
+	while (*s2 == '+' || *s2 == '0')
+		s2++;
+	return (ft_strcmp(s1, s2));
+}
 
+// Checks if there's duplicates on a int*
 int		ft_isdup(char** argv)
 {
 	int	i;
 	int	j;
 
-	i = 0;
 	while (argv[i])
 	{
 		j = i + 1;
 		while (argv[j])
 		{
-			if (argv[i] == argv[j])
+			if (ft_str_nbr_cmp(argv[i], argv[j]) == 0)
 				return (1);
 			j++;
 		}
@@ -72,3 +71,4 @@ int		ft_isdup(char** argv)
 	}
 	return (0);
 }
+

@@ -6,7 +6,7 @@
 /*   By: arigonza <arigonza@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 14:45:16 by arigonza          #+#    #+#             */
-/*   Updated: 2023/06/23 13:07:13 by arigonza         ###   ########.fr       */
+/*   Updated: 2023/06/26 13:11:44 by arigonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,14 +23,11 @@ void    push_swap(int* parsed, int size)
     i = 0;
     while (i < size)
     {
-        if (!stackA.head)
-            insert_node_head(&stackA, create_node(parsed[i]));
-        else
-            insert_node_tail(&stackA,create_node(parsed[i]));
+        insert_node_head(&stackA, create_node(parsed[i]));
         i++;
     }
     ft_sort_stack(&stackA, &stackB);
-    //ft_print_stack(&stackA, 'a');
+    ft_print_stack(&stackA, 'a');
 }
 
 int main(int argc, char** argv)
@@ -42,7 +39,7 @@ int main(int argc, char** argv)
     {
         if (!ft_param_checker(argc, argv))
         {
-            ft_printf("NON VALID ARGUMENTS\n");
+            ft_printf("Error\n");
         }
         else
         {

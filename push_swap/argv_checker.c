@@ -6,7 +6,7 @@
 /*   By: arigonza <arigonza@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/14 21:51:58 by arigonza          #+#    #+#             */
-/*   Updated: 2023/06/23 12:58:43 by arigonza         ###   ########.fr       */
+/*   Updated: 2023/06/29 02:05:21 by arigonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,28 +17,27 @@ int    ft_param_checker(int argc, char** argv)
     int	i;
 	char**	splited;
 	int*	parsed;
-	(void) argc;
-
-	i = 1;
+	
 	if (argc == 2)
 	{
+		i = 0;
 		splited = ft_split(argv[1], ' ');
 		parsed = ft_parse(splited, 0);
-	if (!parsed || !splited)
-		return (ft_free_matrix(splited), free(parsed), 0);
-	while (i < argc)
-	{
-		if (!ft_is_nbr(splited[i]))
+		if (!parsed || !splited)
 			return (ft_free_matrix(splited), free(parsed), 0);
-		i++;
+		while (splited[i])
+		{
+			if (!ft_is_nbr(splited[i]))
+				return (ft_free_matrix(splited), free(parsed), 0);
+			i++;
+		}
+		if (ft_isdup(splited))
+			return (ft_free_matrix(splited), free(parsed), 0);
+		if(ft_is_sorted(parsed, ft_matrix_size(splited)))
+			return (ft_free_matrix(splited), free(parsed), 0);
+		return (1);
 	}
-	if (ft_isdup(splited))
-		return (ft_free_matrix(splited), free(parsed), 0);
-	if(ft_is_sorted(parsed, ft_matrix_size(splited)))
-		return (ft_free_matrix(splited), free(parsed), 0);
-	return (1);
-	}
-	
+	i = 1;
 	parsed = ft_parse(argv, 1);
 	if (!parsed)
 		return (free(parsed), 0);
@@ -55,7 +54,7 @@ int    ft_param_checker(int argc, char** argv)
 	return (1);
 }
 
-// argc should be 1 if there's more than 2 argc or 0 in case there's only 2
+// argc should be 1 if there's more than 2 argc, or 0 in case there's only 2
 int*	ft_parse(char** splited, int argc)
 {
 	int		i;
