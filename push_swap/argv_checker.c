@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   argv_checker.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arigonza <arigonza@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: arigonza < arigonza@student.42malaga.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/14 21:51:58 by arigonza          #+#    #+#             */
-/*   Updated: 2023/06/29 02:05:21 by arigonza         ###   ########.fr       */
+/*   Updated: 2023/07/03 17:18:56 by arigonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,6 @@ int    ft_param_checker(int argc, char** argv)
 		}
 		if (ft_isdup(splited))
 			return (ft_free_matrix(splited), free(parsed), 0);
-		if(ft_is_sorted(parsed, ft_matrix_size(splited)))
-			return (ft_free_matrix(splited), free(parsed), 0);
 		return (1);
 	}
 	i = 1;
@@ -48,8 +46,6 @@ int    ft_param_checker(int argc, char** argv)
 		i++;
 	}
 	if (ft_isdup(argv))
-		return (free(parsed), 0);
-	if(ft_is_sorted(parsed, ft_matrix_size(argv)))
 		return (free(parsed), 0);
 	return (1);
 }

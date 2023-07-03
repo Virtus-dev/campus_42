@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atol.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arigonza <arigonza@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: arigonza < arigonza@student.42malaga.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 14:55:27 by arigonza          #+#    #+#             */
-/*   Updated: 2023/06/16 16:27:59 by arigonza         ###   ########.fr       */
+/*   Updated: 2023/07/03 15:58:36 by arigonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ long	ft_atol(const char *str)
 	i = 0;
 	sign = 1;
 	result = 0;
+	// TODO comprobar si hay ceros delante y controlar el maximo y minimo entero
 	while (ft_is_space(str[i]))
 		i++;
 	if (str[i] == '-' || str[i] == '+')
@@ -36,9 +37,7 @@ long	ft_atol(const char *str)
 	}
 	while ((str[i] >= '0' && str[i] <= '9') && str[i])
 	{
-		//printf("str = %c\n", str[i]);
 		result = result * 10 + (str[i] - '0');
-		//printf("result = %ld\n", result);
 		i++;
 	}
 	return (result * sign);
