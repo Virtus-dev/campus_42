@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: arigonza <arigonza@student.42malaga.com    +#+  +:+       +#+         #
+#    By: arigonza < arigonza@student.42malaga.com>  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/13 13:45:44 by arigonza          #+#    #+#              #
-#    Updated: 2023/06/25 20:58:51 by arigonza         ###   ########.fr        #
+#    Updated: 2023/07/03 17:38:30 by arigonza         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ LIBFT = libft/libft.a
 INC = -I libft/includes
 
 SRC = main.c param_aux_ft.c push_swap.c list_utils.c \
-	utils.c argv_checker.c \
+	utils.c argv_checker.c stack_utils.c \
 
 OBJ = ${SRC:.c=.o}
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stack_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arigonza <arigonza@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: arigonza < arigonza@student.42malaga.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/28 10:08:03 by arigonza          #+#    #+#             */
-/*   Updated: 2023/06/28 10:14:54 by arigonza         ###   ########.fr       */
+/*   Updated: 2023/07/03 17:39:13 by arigonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void    ft_fill_stack(t_stack* stack, int size, int* parsed)
 	i = 0;
     while (i < size)
     {
-        insert_node_head(&stack, create_node(parsed[i]));
+        insert_node_head(stack, create_node(parsed[i]));
         i++;
     }
 }

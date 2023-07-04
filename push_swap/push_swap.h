@@ -62,7 +62,7 @@ void	ft_print_stack(t_stack* stack, char c);
 int		ft_param_checker(int argc, char** argv);
 int		*ft_parse(char** splited, int argc);
 // param_aux_functions
-int		ft_is_sorted(int* values, int size);
+int		ft_is_sorted(t_stack *stack);
 int		ft_isdup(char** argv);
 int		ft_is_nbr(char* s);
 int		ft_str_nbr_cmp(const char* s1, const char* s2);

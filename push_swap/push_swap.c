@@ -25,7 +25,7 @@ void	ft_sort_stack(t_stack* stackA, t_stack* stackB)
         // Encuentra el valor máximo y su posición en stackA
         while (current != NULL)
         {
-            if (current->value < min_value)
+            if (current->value > min_value)
             {
                 min_value = current->value;
                 min_position = position;

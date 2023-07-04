@@ -3,23 +3,25 @@
 /*                                                        :::      ::::::::   */
 /*   param_aux_ft.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arigonza <arigonza@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: arigonza < arigonza@student.42malaga.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 19:26:06 by arigonza          #+#    #+#             */
-/*   Updated: 2023/06/28 09:12:40 by arigonza         ###   ########.fr       */
+/*   Updated: 2023/07/03 17:32:41 by arigonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int ft_is_sorted(int* values, int size)
+int ft_is_sorted(t_stack *stack)
 {
     int i;
+	Node*	current;
 
     i = 0;
-    while (i < size)
+    while (i < stack->size)
     {
-        if (values[i] > values[i + 1])
+		current = stack->head;
+        if ((current->value > current->next->value) && current->next)
             return (0);
         i++;
     }
@@ -58,6 +60,7 @@ int		ft_isdup(char** argv)
 	int	i;
 	int	j;
 
+    i = 0;
 	while (argv[i])
 	{
 		j = i + 1;

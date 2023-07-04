@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arigonza <arigonza@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: arigonza < arigonza@student.42malaga.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 15:05:28 by arigonza          #+#    #+#             */
-/*   Updated: 2023/06/22 15:36:03 by arigonza         ###   ########.fr       */
+/*   Updated: 2023/07/03 14:30:29 by arigonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ static int	ft_counterwords(const char *s, char c)
 {
 	int	i;
 	int	words;
-
 	i = 0;
 	words = 0;
 	while (s[i] != '\0')
@@ -54,6 +53,6 @@ char	**ft_split(const char *s, char c)
 		if (i > 0 && s[i - 1] != c)
 			splitedstr[found++] = ft_substr(s, j, (i - j));
 	}
-	splitedstr[found] = '\0';
+	splitedstr[found] = NULL;
 	return (splitedstr);
 }
