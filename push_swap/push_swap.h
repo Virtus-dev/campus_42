@@ -57,7 +57,7 @@ void	ft_initialize_stack(t_stack* stack);
 void    ft_fill_stack(t_stack* stack, int size, int* parsed);
 void    ft_free_stack(t_stack* stack);
 int		get_max_value(t_stack* stack);
-void	ft_print_stack(t_stack* stack, char c);
+void	ft_print_stack(t_stack* stack);
 // argv_checker
 int		ft_param_checker(int argc, char** argv);
 int		*ft_parse(char** splited, int argc);

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: arigonza < arigonza@student.42malaga.com>  +#+  +:+       +#+         #
+#    By: arigonza <arigonza@student.42malaga.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/13 13:45:44 by arigonza          #+#    #+#              #
-#    Updated: 2023/07/03 17:38:30 by arigonza         ###   ########.fr        #
+#    Updated: 2023/07/04 15:44:40 by arigonza         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,7 @@ $(PUSH_SWAP) : $(LIBFT) $(SRC)
 	@echo "|---------------------------|"
 	@echo "|  Compiling Push_swap🤖🤖  |"
 	@echo "|---------------------------|"
-	@gcc $(CFLAGS) -g $(INC) -o $(PUSH_SWAP) $(SRC) $(LIBFT)
+	@gcc $(CFLAGS) $(INC) -o $(PUSH_SWAP) $(SRC) $(LIBFT)
 
 $(LIBFT) :
 	@make -s -C libft
