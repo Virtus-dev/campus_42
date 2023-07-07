@@ -6,7 +6,7 @@
 #    By: arigonza <arigonza@student.42malaga.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/13 13:45:44 by arigonza          #+#    #+#              #
-#    Updated: 2023/07/04 15:44:40 by arigonza         ###   ########.fr        #
+#    Updated: 2023/07/07 20:25:51 by arigonza         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,7 @@ $(PUSH_SWAP) : $(LIBFT) $(SRC)
 	@echo "|---------------------------|"
 	@echo "|  Compiling Push_swap🤖🤖  |"
 	@echo "|---------------------------|"
-	@gcc $(CFLAGS) $(INC) -o $(PUSH_SWAP) $(SRC) $(LIBFT)
+	@gcc $(CFLAGS) -g $(INC) -o $(PUSH_SWAP) $(SRC) $(LIBFT)
 
 $(LIBFT) :
 	@make -s -C libft
@@ -46,3 +46,10 @@ fclean : clean
 	@make -C libft fclean
 	@rm -rf $(PUSH_SWAP)
 	@echo 🔥🔥deleted executables files 🗑️ 🗑️
+
+re : fclean all
+
+py : all
+	python3 python_visualizer.py `ruby -e "puts (-50..50).to_a.shuffle.join(' ')"`
+
+phony : all clean fclean re py

@@ -25,7 +25,7 @@ void	ft_sort_stack(t_stack* stackA, t_stack* stackB)
         // Encuentra el valor máximo y su posición en stackA
         while (current != NULL)
         {
-            if (current->value > min_value)
+            if (current->value < min_value)
             {
                 min_value = current->value;
                 min_position = position;
@@ -54,7 +54,6 @@ void	ft_sort_stack(t_stack* stackA, t_stack* stackB)
             while (min_position > 0)
             {
                 ft_rra(stackA); // Rota stackA en dirección rra para mover el valor máximo a la cima
-                ft_printf("rra\n");
 				min_position--;
             }
             ft_pb(stackB, stackA); // Empuja el valor máximo a stackB
@@ -82,6 +81,7 @@ void	ft_pa(t_stack* stackA, t_stack* stackB)
 {
 	insert_node_head(stackA, pop(stackB));
 	ft_putstr("pa\n");
+	//ft_print_stack(stackA);
 }
 
 void	ft_sb(t_stack* stackB)
@@ -99,6 +99,7 @@ void	ft_pb(t_stack* stackB, t_stack* stackA)
 {
 	insert_node_head(stackB, pop(stackA));
 	ft_putstr("pb\n");
+	//ft_print_stack(stackB);
 }
 
 void	ft_ss(t_stack* stackA, t_stack* stackB)
@@ -141,6 +142,7 @@ void	ft_rra(t_stack* stackA)
 	current->next = stackA->head;
 	stackA->head = current;
 	ft_putstr("rra\n");
+	//ft_print_stack(stackA);
 }
 
 void	ft_rrb(t_stack* stackB)

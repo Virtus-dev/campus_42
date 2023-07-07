@@ -6,26 +6,29 @@
 /*   By: arigonza <arigonza@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 14:45:16 by arigonza          #+#    #+#             */
-/*   Updated: 2023/07/04 15:50:55 by arigonza         ###   ########.fr       */
+/*   Updated: 2023/07/07 20:32:49 by arigonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+void    ft_leaks(void)
+{
+    system("leaks -q push_swap");
+}
+
 void    push_swap(int* parsed, int size)
 {
-    int i;
     t_stack stackA;
     t_stack stackB;
     
     ft_initialize_stack(&stackA);
     ft_initialize_stack(&stackB);
     
-    i = 0;
-    while (i < size)
+    while (size > 0)
     {
-        insert_node_head(&stackA, create_node(parsed[i]));
-        i++;
+        insert_node_head(&stackA, create_node(parsed[size - 1]));
+        size--;
     }
     if (ft_is_sorted(&stackA))
     {
@@ -34,7 +37,6 @@ void    push_swap(int* parsed, int size)
         return;
     }
     ft_sort_stack(&stackA, &stackB);
-    //ft_print_stack(&stackA);
 }
 
 int main(int argc, char** argv)
@@ -51,7 +53,6 @@ int main(int argc, char** argv)
         }
         else
         {
-            //ft_printf("VALID ARGUMENTS\n");
             if (argc == 2)
             {
                 char** splited = ft_split(argv[1], ' ');
