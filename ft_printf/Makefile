@@ -3,14 +3,14 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: arigonza <arigonza@student.42malaga.com>   +#+  +:+       +#+         #
+#    By: arigonza <arigonza@student.42malaga.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/01 17:52:08 by arigonza          #+#    #+#              #
-#    Updated: 2023/05/01 17:52:20 by arigonza         ###   ########.fr        #
+#    Updated: 2023/07/16 18:05:32 by arigonza         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = libftprintf.a
+NAME = printf.a
 
 AR = ar
 ARFLAGS = crs
@@ -21,7 +21,7 @@ FLAGS = -Wall -Werror -Wextra
 
 RM = rm
 
-RMFLAG = -f
+RMFLAG = -rf
 
 INCLUDES = ./ft_printf.h
 
@@ -33,17 +33,21 @@ OBJS = $(SRC:.c=.o)
 all : $(NAME)
 
 clean :
-	$(RM) $(RMFLAG) $(OBJS)
+	@echo "Cleaning..."
+	@$(RM) $(RMFLAG) $(OBJS)
 
 fclean : clean
-	$(RM) $(RMFLAG) $(NAME)
+	@echo "Full clean..."
+	@$(RM) $(RMFLAG) $(NAME)
 
 re : fclean all
 
 %o : $(SRC) $(INCLUDES)
-	$(CC) $(FLAGS) -c $< -o $(<:.c=.o)
+	@echo "Compiling..."
+	@$(CC) $(FLAGS) -c $< -o $(<:.c=.o)
 	
 $(NAME) : $(OBJS)
-	$(AR) $(ARFLAGS) $@ $^
+	@echo "Creating library..."
+	@$(AR) $(ARFLAGS) $@ $^
 
 .PHONY: all clean fclean re

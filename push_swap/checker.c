@@ -6,7 +6,7 @@
 /*   By: arigonza <arigonza@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/26 14:08:53 by arigonza          #+#    #+#             */
-/*   Updated: 2023/06/28 10:26:02 by arigonza         ###   ########.fr       */
+/*   Updated: 2023/07/09 20:59:32 by arigonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,5 +69,8 @@ void    ft_checker(char** argv, int argc)
 		free(op);
 		op = get_next_line(0);
 	}
-	if (ft_is_sorted())
+	if (ft_is_sorted(&stackA))
+		ft_printf("OK\n");
+	else
+		ft_printf("KO\n");
 }
